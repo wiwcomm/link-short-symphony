@@ -4,9 +4,12 @@ SELECT DISTINCT ON ("category_id") * FROM "items" ORDER BY "category_id", "price
 
 2. Задание.
 
-Тут я не очень силен. 
+Тут я не очень силен.
+
 CREATE INDEX some_table_idx ON some_table (a, b);
+
 CREATE INDEX some_table_idx2 ON some_table_idx (info NULLS FIRST);
+
 CREATE INDEX some_table_idx3 ON some_table_idx (id DESC NULLS LAST);
 
 3. Задание.
