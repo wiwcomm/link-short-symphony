@@ -1,6 +1,6 @@
 1. Задание.
 
-SELECT DISTINCT ON ("category_id") * FROM "items" ORDER BY "category_id", "price" DESC;
+SELECT DISTINCT ON ("category_id") * FROM "items" ORDER BY "category_id", "price" DESC LIMIT 3;
 
 2. Задание.
 
