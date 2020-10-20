@@ -1,0 +1,12 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+link_short:
+  path: /short/
+  controller: App\Controller\LinkShortController::shortLink
+  methods:    POST
+
+link_go:
+  path: /go/{id}
+  controller: App\Controller\LinkGoController::goLink
+  methods:    GET|HEAD
