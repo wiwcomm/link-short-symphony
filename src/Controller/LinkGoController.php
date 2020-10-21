@@ -1,28 +1,33 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Entity\Links;
+
+use App\Repository\LinksRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class LinkGoController extends AbstractController
 {
     /**
-     * @Route("/go/{id}")
+     * @Route("/go/{id}", name="go")
      * @param $id
      * @return RedirectResponse
      */
 
+    private $linksRepository;
+
+    public function __construct(LinksRepository $linksRepository)
+    {
+        $this->linksRepository = $linksRepository;
+    }
+
+
     public function goLink($id)
     {
 
-        $repository = $this -> getDoctrine()->getRepository(Links::class);
-
-
-        $short_link = $repository -> findOneBy(['short_link' => $id]);
+        $short_link = $this->linksRepository -> findOneBy(['short_link' => $id]);
 
         if (!$short_link) {
             throw $this->createNotFoundException(

@@ -6,6 +6,7 @@ link_short:
   controller: App\Controller\LinkShortController::shortLink
   methods:    POST
 
+
 link_go:
   path: /go/{id}
   controller: App\Controller\LinkGoController::goLink

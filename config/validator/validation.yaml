@@ -1,0 +1,11 @@
+# config/validator/validation.yaml
+App\Entity\Links:
+  properties:
+    link:
+      - Url: ~
+
+App\Entity\Input:
+  properties:
+    json:
+      - Json:
+          message: You've entered an invalid Json.
