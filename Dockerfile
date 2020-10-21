@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt-get update \
-    && apt-get install -y libpq-dev
+    && apt-get install -y libpq-dev git zip
 RUN docker-php-ext-install exif
 RUN docker-php-ext-install opcache
 
@@ -16,6 +16,8 @@ WORKDIR /app
 COPY ./ /app
 
 
-RUN composer install
+RUN composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
 CMD ["php-fpm", "--nodaemonize"]
+
+EXPOSE 9000
