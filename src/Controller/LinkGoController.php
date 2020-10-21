@@ -3,6 +3,7 @@ namespace App\Controller;
 
 
 use App\Repository\LinksRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,15 +24,17 @@ class LinkGoController extends AbstractController
         $this->linksRepository = $linksRepository;
     }
 
-
     public function goLink($id)
     {
-
         $short_link = $this->linksRepository -> findOneBy(['short_link' => $id]);
 
         if (!$short_link) {
-            throw $this->createNotFoundException(
-                'Link not found by this id: '.$id
+
+            $result_json = json_encode(['error' => 'Link not found by this id: '.$id]);
+            return new Response(
+                $result_json,
+                Response::HTTP_NOT_FOUND,
+                ['content-type' => 'application/json']
             );
         }
 
