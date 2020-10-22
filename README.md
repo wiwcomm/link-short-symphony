@@ -5,8 +5,11 @@ SELECT DISTINCT ON ("category_id") * FROM "items" ORDER BY "category_id", "price
 2. Задание.
 
 CREATE NONCLUSTERED INDEX IX1 ON some_table (a,b) INCLUDE (c);
+
 CREATE NONCLUSTERED INDEX IX3 ON some_table (a) INCLUDE (b,c);
+
 CREATE NONCLUSTERED INDEX IX4 ON some_table (b) INCLUDE (a,c);
+
 CREATE CLUSTERED INDEX IX2 ON some_table (c ASC);
 
 Про селективность. 
